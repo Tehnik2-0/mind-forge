@@ -1,5 +1,4 @@
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import HTMLResponse
 from typing import List
 from PIL import Image
 
@@ -23,21 +22,3 @@ async def create_upload_files(files: List[UploadFile] = File(...)):
     (width2, height2) = im2.size
     return (width1 * height1 + width2 * height2)
 
-
-
-@app.get("/")
-async def main():
-    content = """
-<body>
-<form action="/files/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-<form action="/uploadfiles/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-</body>
-    """
-    return HTMLResponse(content=content)
