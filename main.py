@@ -20,7 +20,7 @@ async def home():
 
 
 @app.post("/uploadfiles/")
-async def create_upload_files(files: List[UploadFile] = File(...)):
+async def create_upload_files(*, files: List[UploadFile] = File(...)):
     image1 = files[0]
     im1 = Image.open(image1.file)
     (width1, height1) = im1.size
