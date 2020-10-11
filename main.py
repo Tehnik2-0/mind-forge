@@ -14,6 +14,11 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+async def home():
+    return {"message": "Hello world"}
+
+
 @app.post("/uploadfiles/")
 async def create_upload_files(files: List[UploadFile] = File(...)):
     image1 = files[0]
